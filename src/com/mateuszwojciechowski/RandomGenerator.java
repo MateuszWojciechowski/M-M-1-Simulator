@@ -9,23 +9,15 @@ public class RandomGenerator {
     /**
      * Instance of random numbers generator
      */
-    private Random random;
-
-    /**
-     * Constructor of the generator
-     * @param seed random numbers generator seed
-     * @param lambda exponential distribution parameter
-     */
-    public RandomGenerator(int seed, double lambda) {
-        random = new Random(seed);
-    }
+    private static Random random = new Random();
 
     /**
      * Function to generate exponential distribution random number.
      * @param parameter exponential distribution parameter
      * @return exponential distribution random number
      */
-    public double getNextExpDist(double parameter) {
-        return Math.log(random.nextDouble())/(-parameter);
+    public static long getNextExpDist(double parameter) {
+        long number = Math.round(Math.log(random.nextDouble())/(-parameter) * 1000);
+        return number;
     }
 }
