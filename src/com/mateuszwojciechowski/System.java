@@ -106,18 +106,26 @@ public class System {
         else return null;
     }
 
+    public static Instant getNextEventStartTime() {
+        if(!eventList.isEmpty()) {
+            Event event = eventList.getFirst();
+            Instant time = event.getEventStartTime();
+            return time;
+        } else return null;
+    }
+
     /**
      * Queue size.
      */
     private static int eventsInSystem = 0;
 
-    public static int getEventsInSystem() {
+    public static int getNumberOfEventsInSystem() {
         return eventsInSystem;
     }
-    public static void increaseEventsInSystem() {
+    public static void increaseNumberOfEventsInSystem() {
         eventsInSystem++;
     }
-    public static void decreaseEventsInSystem() {
+    public static void decreaseNumberOfEventsInSystem() {
         if(eventsInSystem > 0)
             eventsInSystem--;
     }
@@ -153,12 +161,11 @@ public class System {
         System.timeRemainingToEmptySystem += additionalTime;
     }
 
-    public static void decreaseTimeToEmptySystem(long time) {
+    public static void decreaseTimeRemainingToEmptySystem(long time) {
         System.timeRemainingToEmptySystem -= time;
         if(timeRemainingToEmptySystem < 0)
             timeRemainingToEmptySystem = 0;
     }
-    //TODO statistics
     /**
      * Constructor with lambda and mu parameters
      * @param lambda inflow intensity

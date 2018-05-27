@@ -64,27 +64,33 @@ public class Event implements Comparable {
     }
 
     public void process() {
-        System.decreaseTimeToEmptySystem(Math.abs(Duration.between(getEventStartTime(), System.getPreviousEventTime()).toMillis()));
+        Statistics.addToAverageNumberInSystem(Duration.between(System.getPreviousEventTime(), eventStartTime).toMillis(), System.getNumberOfEventsInSystem());
+        System.decreaseTimeRemainingToEmptySystem(Math.abs(Duration.between(getEventStartTime(), System.getPreviousEventTime()).toMillis()));
+        java.lang.System.out.println("Time remaining to empty system: " + System.getTimeRemainingToEmptySystem() + "ms");
         if(eventType == EventType.ARRIVAL) {
             /*
             1. Increase number of events in the system.
             2. Generate departure event.
              */
-            System.increaseEventsInSystem();
+            System.increaseNumberOfEventsInSystem();
             long newEventDuration = RandomGenerator.getNextExpDist(System.getMu());
+
+            Statistics.addToAverageEventTime(newEventDuration);
+            Statistics.addToAverageTimeToService(System.getTimeRemainingToEmptySystem());
+            Statistics.increaseNumberOfArrivals();
+
             java.lang.System.out.println("Event duration: " + newEventDuration + "ms");
             System.addEvent(new Event(Instant.ofEpochMilli(eventStartTime.toEpochMilli() + newEventDuration + System.getTimeRemainingToEmptySystem()), EventType.DEPARTURE, newEventDuration));
             System.increaseTimeRemainingToEmptySystem(newEventDuration);
-            Statistics.addToAverage(newEventDuration, System.getEventsInSystem());
         }
         else {
             /*
             1. Decrease number of events in the system.
             2. Decrease time remaining to empty system
              */
-            System.decreaseEventsInSystem();
-            System.decreaseTimeToEmptySystem(eventDuration);
+            Statistics.increaseNumberOfDepartures();
+            System.decreaseNumberOfEventsInSystem();
         }
-        java.lang.System.out.println("Events in system: " + System.getEventsInSystem());
+        java.lang.System.out.println("Events in system: " + System.getNumberOfEventsInSystem());
     }
 }

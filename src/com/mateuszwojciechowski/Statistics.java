@@ -1,27 +1,54 @@
 package com.mateuszwojciechowski;
 
 public class Statistics {
-    private static int numberOfEvents = 0;
+    private static int numberOfArrivals = 0;
+    private static int numberOfDepartures = 0;
     private static double averageNumberInSystem = 0;
     private static double simulationTime = 0;
+    private static double averageTimeToService = 0;
+    private static double averageEventTime = 0;
+    private static double averageNumberOfWaitingTasks = 0;
 
-    public static void addToAverage(long duration, int state) {
+    public static void addToAverageNumberInSystem(long duration, int state) {
         averageNumberInSystem += duration * state;
         simulationTime += duration;
+        if(state > 1) {
+            averageNumberOfWaitingTasks += duration * (state-1);
+        }
     }
     public static double getAverageNumberInSystem() {
         return averageNumberInSystem/simulationTime;
     }
-
-    public static double getAverageTime() {
-        return simulationTime/numberOfEvents;
+    public static double getAverageNumberOfWaitingTasks() {
+        return averageNumberOfWaitingTasks/simulationTime;
+    }
+    public static double getAverageServiceTime() {
+        return (averageEventTime+averageTimeToService)/numberOfArrivals;
     }
 
-    public static void increaseNumberOfEvents() {
-        numberOfEvents++;
+    public static void increaseNumberOfArrivals() {
+        numberOfArrivals++;
+    }
+
+    public static void increaseNumberOfDepartures() {
+        numberOfDepartures++;
     }
 
     public static int getNumberOfEvents() {
-        return numberOfEvents;
+        return numberOfArrivals + numberOfDepartures;
+    }
+
+    public static void addToAverageTimeToService(long duration) {
+        averageTimeToService += duration;
+    }
+    public static double getAverageTimeToService() {
+        return averageTimeToService/numberOfArrivals;
+    }
+
+    public static void addToAverageEventTime(long duration) {
+        averageEventTime += duration;
+    }
+    public static double getAverageEventTime() {
+        return averageEventTime/numberOfArrivals;
     }
 }
