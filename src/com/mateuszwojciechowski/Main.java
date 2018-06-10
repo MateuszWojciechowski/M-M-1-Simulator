@@ -35,6 +35,15 @@ public class Main {
             java.lang.System.out.println(e.getMessage());
         }
 
+        java.lang.System.out.println("Choose random generator seed: ");
+        int seed = 0;
+        try {
+            seed = Integer.valueOf(br.readLine());
+        } catch (IOException e) {
+            java.lang.System.out.println(e.getMessage());
+        }
+
+        RandomGenerator.setSeed(seed);
         system = new System(lambda, mu);
 
         //Simulation loop

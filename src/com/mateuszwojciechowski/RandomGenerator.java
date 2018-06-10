@@ -12,6 +12,14 @@ public class RandomGenerator {
     private static Random random = new Random();
 
     /**
+     * Pseudorandom generator seed setter
+     * @param seed pseudorandom generator seed
+     */
+    public static void setSeed(int seed) {
+        random = new Random(seed);
+    }
+
+    /**
      * Function to generate exponential distribution random number.
      * @param parameter exponential distribution parameter
      * @return exponential distribution random number
