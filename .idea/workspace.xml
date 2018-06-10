@@ -8,8 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4433de3f-41e8-4b3a-96b0-41af60982f66" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/mateuszwojciechowski/Main.java" afterPath="$PROJECT_DIR$/src/com/mateuszwojciechowski/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/mateuszwojciechowski/RandomGenerator.java" afterPath="$PROJECT_DIR$/src/com/mateuszwojciechowski/RandomGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/MM1 Simulator/com/mateuszwojciechowski/Main.class" afterPath="$PROJECT_DIR$/out/production/MM1 Simulator/com/mateuszwojciechowski/Main.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/MM1 Simulator/com/mateuszwojciechowski/RandomGenerator.class" afterPath="$PROJECT_DIR$/out/production/MM1 Simulator/com/mateuszwojciechowski/RandomGenerator.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -306,6 +306,14 @@
       <option name="presentableId" value="Default" />
       <updated>1526221951763</updated>
     </task>
+    <task id="LOCAL-00001" summary="added seed setting">
+      <created>1528641438841</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1528641438842</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -396,6 +404,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added seed setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="added seed setting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
